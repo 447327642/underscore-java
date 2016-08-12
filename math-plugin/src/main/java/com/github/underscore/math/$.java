@@ -476,6 +476,27 @@ public class $<T> extends com.github.underscore.$<T> {
         return createPermutationWithRepetition((List<T>) value(), permutationLength);
     }
 
+    public static <T> List<List<T>> createSimpleCombination(final List<T> list, final int combinationLength) {
+        final List<List<T>> result = new ArrayList<List<T>>();
+        final int[] bitVector = new int[combinationLength];
+        for (int index = 0; index < combinationLength; index += 1) {
+            List<T> result2 = new ArrayList<T>(combinationLength);
+            for (int index2 = 0; index2 < combinationLength; index2 += 1) {
+                result2.add(list.get(bitVector[index2]));
+            }
+            int index3 = 0;
+            while (index3 < combinationLength && bitVector[index3] == list.size() - 1) {
+                bitVector[index3] = 0;
+                index3 += 1;
+            }
+            if (index3 < combinationLength) {
+                bitVector[index3] += 1;
+            }
+            result.add(result2);
+        }
+        return result;
+    }
+
     public static void main(String ... args) {
         final String message = "Underscore-java-math is a math plugin for underscore-java.\n\n"
             + "For docs, license, tests, and downloads, see: http://javadev.github.io/underscore-java";

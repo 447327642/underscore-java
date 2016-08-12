@@ -229,6 +229,21 @@ System.out.println("Sum of letters in words starting with E... " + sum);
                    + " [orange, orange, orange]]", resultChain.toString());
     }
 
+    @Test
+    public void createSimpleCombination() {
+        List<List<String>> result = $.createSimpleCombination(asList("red", "black", "white", "green", "blue"), 3);
+        assertEquals("[[red, black, white],"
+                   + " [red, black, green],"
+                   + " [red, black, blue],"
+                   + " [red, white, green],"
+                   + " [red, white, blue],"
+                   + " [red, green, blue],"
+                   + " [black, white, green],"
+                   + " [black, white, blue],"
+                   + " [black, green, blue],"
+                   + " [white, green, blue]]", result.toString());
+    }
+
     @SuppressWarnings("unchecked")
     @Test
     public void main() {
